@@ -6,3 +6,4 @@ db.create_all()
 
 --------------------------------------------
 
+Security : Hash, salt, algo version, cost factor, delimeter in hash : $, UFT-8
