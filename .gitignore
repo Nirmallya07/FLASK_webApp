@@ -12,3 +12,5 @@ instance/
 
 # SQLite DB files
 *.db
+
+
