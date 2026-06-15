@@ -4,7 +4,9 @@
         <form method="POST" action="" novalidate>
             {{ form.hidden_tag() }}
             <fieldset class="form-group">
+
                 <legend class="border-bottom mb-4">Join Today</legend>
+
                 <div class="form-group">
                     {{ form.username.label(class="form-control-label") }}
 
@@ -19,6 +21,23 @@
                         {{ form.username(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+
+                <br>
+
+                <div class="form-group">
+
+                    {{ form.gender.label(class="form-control-label") }} <br>
+                    
+                    {% for gender in form.gender %}
+                        <tr>
+                            <td>{{ gender }}</td>
+                            <td>{{ gender.label }}</td>
+                            <br>
+                        </tr>
+                    {% endfor %}
+                    <!-- <button type="submit">Submit</button> -->
+                <br>
+
                 <div class="form-group">
                     {{ form.email.label(class="form-control-label") }}
                     {% if form.email.errors %}

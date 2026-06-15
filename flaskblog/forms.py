@@ -1,13 +1,14 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, FileField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, FileField, RadioField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flaskblog.models import User
 from flask_login import current_user
 
 class RegistrationForm(FlaskForm) :
 
-    username = StringField('username', validators = [DataRequired(), Length(min=2, max = 30)])
+    username = StringField('Username', validators = [DataRequired(), Length(min=2, max = 30)])
+    gender = RadioField('Gender', choices=[('Male','Male'), ('Female','Female'), ('Others','Others')], validators=[DataRequired()])
     email = StringField('email', validators = [DataRequired(), Email()])
     password = PasswordField('password', validators = [DataRequired()])
     confirm_Password = PasswordField('confirm password', validators = [DataRequired(), EqualTo('password')])
@@ -32,11 +33,11 @@ class LoginForm(FlaskForm) :
     remember = BooleanField('Remember me')
     submit = SubmitField('Login')
     
-class UpdateForm(FlaskForm) :
+class UpdateAccountForm(FlaskForm) :
     username = StringField('Username', validators=[DataRequired(), Length(max=30, min=2)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
-    sublit = SubmitField("Update Info")
+    submit = SubmitField("Update Info")
 
     def validate_username(self, username) :
         if username.data != current_user.username:
@@ -50,3 +51,4 @@ class UpdateForm(FlaskForm) :
             if user:
                 raise ValidationError("This email is already in use, plese use a different email.")
 
+ 
