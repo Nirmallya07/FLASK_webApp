@@ -9,9 +9,9 @@ class RegistrationForm(FlaskForm) :
 
     username = StringField('Username', validators = [DataRequired(), Length(min=2, max = 30)])
     gender = RadioField('Gender', choices=[('Male','Male'), ('Female','Female'), ('Others','Others')], validators=[DataRequired()])
-    email = StringField('email', validators = [DataRequired(), Email()])
-    password = PasswordField('password', validators = [DataRequired()])
-    confirm_Password = PasswordField('confirm password', validators = [DataRequired(), EqualTo('password')])
+    email = StringField('Email', validators = [DataRequired(), Email()])
+    password = PasswordField('Password', validators = [DataRequired()])
+    confirm_Password = PasswordField('Confirm password', validators = [DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
 
     def validate_username(self, username):

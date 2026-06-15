@@ -46,7 +46,7 @@ def register():
         if (form.gender.data == "Male") : image = "default_male.png"
         elif (form.gender.data == "Female") : image = "default_female.png"
         else : image = "952446948f7ef62dScreenshot from 2025-11-25 19-55-59.png"
-        user = User(username = form.username.data,gender = form.gender.data, email = form.email.data, password = hash_pw, image_file = image)
+        user = User(username = form.username.data, gender = form.gender.data, email = form.email.data, password = hash_pw, image_file = image)
         db.session.add(user)
         db.session.commit()
         flash(f'Account created for {form.username.data}!', 'success')
